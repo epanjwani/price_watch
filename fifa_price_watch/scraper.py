@@ -83,7 +83,7 @@ def exporter():
     positionjson = {date_time : pos_dict}
     chemistryjson = {date_time : chem_dict}
     data = {}
-    with open('/home/ep/fifa_price_watch/data.json') as data_file:
+    with open('/home/ep/public_html/price_watch/fifa_price_watch/data.json') as data_file:
         data = json.load(data_file)
         fit = data['fitness']
         fit.append(fitnessjson)
@@ -91,7 +91,7 @@ def exporter():
         pos.append(positionjson)
         chem = data['chemistry']
         chem.append(chemistryjson)
-    with open('/home/ep/fifa_price_watch/data.json', "w") as data_file:
+    with open('/home/ep/public_html/price_watch/fifa_price_watch/data.json', "w") as data_file:
         json.dump(data, data_file)
         
 exporter()

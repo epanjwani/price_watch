@@ -2,32 +2,95 @@
 <meta charset="utf-8"/>
     <title>FIFA Consumable Trading</title> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 </head>
 <body>
+<canvas id = "testchart" width="400" height="400"></canvas>
+
 <script>
-function getData()
+function getData(req)//reads in data from data.json and initializes global data holders
 {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200)
         {
-	    console.log(this.responseText);
-            let data = this.responseText;
-            $("#tester").html(data);
+            let data = JSON.parse(this.responseText);
+            console.log("Data successfully parsed from server");
+            let fitnessdata = data.fitness;
+            let positiondata = data.position;
+            let chemistrydata = data.chemistry;
+            if (req == "fitness")
+            {
+                generateFitnessChart(fitnessdata);
+            }
+            else if (req == "position")
+            {
+                return positiondata;
+            }
+            else if (req == "chemistry")
+            {
+                return chemistrydata;
+            }
         }
     };
-    xhttp.open("GET", "data.json");
+    xhttp.open("GET", "processed_data.json");
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
-
-
 }
 $(document).ready(function(){
-    getData();
+    getData("fitness");
+    let select = $("#testchart")
+    let mychart = new Chart(select, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 });
 
+function generateFitnessChart(data)
+{
+    /*for now generate last day data as default*/
+    let past_24_hours = data.slice(data.length-48);
+    let dict;
+    for (let i = 0; i < 48; i++)
+    {
+        
+    }
+}
 </script>
-<p>we made it</p>
+
+
 <hr>
 <p id = "tester"></p>
 </body></html>
