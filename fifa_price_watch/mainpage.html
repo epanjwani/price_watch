@@ -45,34 +45,125 @@
         if (start.getMinutes()>=30)
             minutes = 30;
         start.setMinutes(minutes);
-        let dates_array = []
+        let dates_array = [];
         if (req == "fitness")
         {
-            let bronze_array = []
-            let silver_array = []
-            let gold_array = []
+            let bronze_array = [];
+            let silver_array = [];
+            let gold_array = [];
+            days_data = data.slice(-48);
+            for (let i = 0; i < 48; i++)
+            {
+                let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
+                /*when implementing timezones, make a new start date object with adjusted date/time, get query from
+                generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
+                let dict = days_data[i];
+                let dateLabel = generateDateLabel(date);
+                for (let key in dict)
+                {
+                    gold_array.push(dict[key].gold);
+                    silver_array.push(dict[key].silver);
+                    bronze_array.push(dict[key].bronze);
+                }
+                dates_array.push(dateLabel);
+            }
+            generateFitnessChart(dates_array, bronze_array, silver_array, gold_array);       
         }
         else if (req == "position")
         {
-            let 
-        }
-        days_data = data.slice(-48);
-        for (let i = 0; i < 48; i++)
-        {
-            let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
-            /*when implementing timezones, make a new start date object with adjusted date/time, get query from
-            generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
-            let dict = days_data[i];
-            let dateLabel = generateDateLabel(date);
-            for (let key in dict)
+            let lwb_lb_array = [];
+            let lb_lwb_array = [];
+            let rwb_rb_array = []
+            let rb_rwb_array = []
+            let lm_lw_array = []
+            let lw_lm_array = []
+            let rw_rm_array = []
+            let rm_rw_array = []
+            let lw_lf_array = []
+            let lf_lw_array = []
+            let rw_rf_array = []
+            let rf_rw_array = []
+            let cm_cam_array = []
+            let cam_cm_array = []
+            let cm_cdm_array = []
+            let cam_cf_array = []
+            let cf_cam_array = []
+            let cdm_cm_array = []
+            let cf_st_array = []
+            let st_cf_array = []
+            days_data = data.slice(-48);
+            for (let i = 0; i < 48; i++)
             {
-                gold_array.push(dict[key].gold);
-                silver_array.push(dict[key].silver);
-                bronze_array.push(dict[key].bronze);
+                let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
+                /*when implementing timezones, make a new start date object with adjusted date/time, get query from
+                generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
+                let dict = days_data[i];
+                let dateLabel = generateDateLabel(date);
+                for (let key in dict)
+                {
+                    lwb_lb_array.push(dict[key].lwb_lb);
+                    lb_lwb_array.push(dict[key].lb_lwb);
+                    rwb_rb_array.push(dict[key].rwb_rb);
+                    rb_rwb_array.push(dict[key].rb_rwb);
+                    lm_lw_array.push(dict[key].lm_lw);
+                    lw_lm_array.push(dict[key].lw_lm);
+                    rw_rm_array.push(dict[key].rw_rm);
+                    rm_rw_array.push(dict[key].rm_rw);
+                    lw_lf_array.push(dict[key].lw_lf);
+                    lf_lw_array.push(dict[key].lf_lw);
+                    rw_rf_array.push(dict[key].rw_rf);
+                    rf_rw_array.push(dict[key].rf_rw);
+                    cm_cam_array.push(dict[key].cm_cam);
+                    cam_cm_array.push(dict[key].cam_cm);
+                    cm_cdm_array.push(dict[key].cm_cdm);
+                    cdm_cm_array.push(dict[key].cdm_cm);
+                    cam_cf_array.push(dict[key].cam_cf);
+                    cf_cam_array.push(dict[key].cf_cam);
+                    cf_st_array.push(dict[key].cf_st);
+                    st_cf_array.push(dict[key].st_cf);
+                }
                 dates_array.push(dateLabel);
             }
+            generatePositionChart(dates_array, lwb_lb_array, lb_lwb_array, rwb_rb_array, rb_rwb_array, lm_lw_array, 
+            lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, 
+            cam_cm_array, cm_cdm_array, cam_cf_array, cf_cam_array, cdm_cm_array, cf_st_array, st_cf_array);
         }
-        generateFitnessChart(dates_array, bronze_array, silver_array, gold_array);
+        else if (req == "chemistry")
+        {
+            let anchor_array = []
+            let engine_array = []
+            let shadow_array = []
+            let deadeye_array = []
+            let basic_array = []
+            let hunter_array = []
+            let catalyst_array = []
+            let hawk_array = []
+            let sniper_array = []
+            days_data = data.slice(-48);
+            for (let i = 0; i < 48; i++)
+            {
+                let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
+                /*when implementing timezones, make a new start date object with adjusted date/time, get query from
+                generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
+                let dict = days_data[i];
+                let dateLabel = generateDateLabel(date);
+                for (let key in dict)
+                {
+                    anchor_array.push(dict[key].anchor);
+                    engine_array.push(dict[key].engine);
+                    shadow_array.push(dict[key].shadow);
+                    deadeye_array.push(dict[key].deadeye);
+                    basic_array.push(dict[key].basic);
+                    hunter_array.push(dict[key].hunter);
+                    catalyst_array.push(dict[key].catalyst);
+                    hawk_array.push(dict[key].hawk);
+                    sniper_array.push(dict[key].sniper);
+                }
+                dates_array.push(dateLabel);
+            }
+            generateChemistryChart(dates_array, anchor_array, engine_array, shadow_array, deadeye_array, basic_array,
+            hunter_array, catalyst_array, hawk_array, sniper_array);
+        }
     }
     function generateQuery(date)
     {
@@ -87,7 +178,6 @@
         let query = hour.concat("_", minute, "_", year, "_", month, "_", day);
         return query;
     }
-
     function generateDateLabel(query)
     {
         let hour = query.substring(0,2);
@@ -178,11 +268,233 @@
         });
     }
 
+    function generatePositionChart(dates_array, lwb_lb_array, lb_lwb_array, rwb_rb_array, rb_rwb_array, lm_lw_array, 
+    lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, cam_cm_array, 
+    cm_cdm_array, cam_cf_array, cf_cam_array, cdm_cm_array, cf_st_array, st_cf_array)
+    {
+        let select = $("#testchart")
+        let mychart = new Chart(select, {
+        type: 'line',
+        data: {
+            labels: dates_array,
+            datasets: [{
+                label: 'LWB -> LB',
+                data: lwb_lb_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'LB -> LWB',
+                data: lb_lwb_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'RWB -> RB',
+                data: rwb_rb_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'RB -> RWB',
+                data: rb_rwb_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'LM -> LW',
+                data: lm_lw_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'LW -> LM',
+                data: lw_lm_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'RW -> RM',
+                data: rw_rm_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'RM -> RW',
+                data: rm_rw_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'LW -> LF',
+                data: lw_lf_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'LF -> LW',
+                data: lf_lw_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'RW -> RF',
+                data: rw_rf_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'RF -> RW',
+                data: rf_rw_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CM -> CAM',
+                data: cm_cam_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CAM -> CM',
+                data: cam_cm_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CM -> CDM',
+                data: cm_cdm_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CDM -> CM',
+                data: cdm_cm_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CAM -> CF',
+                data: cam_cf_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CF -> CAM',
+                data: cf_cam_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'CF -> ST',
+                data: cf_st_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'ST -> CF',
+                data: st_cf_array,
+                borderColor: "#cd7f32",
+                fill: false
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+        },
+        });
+    }
+
+    function generateChemistryChart(dates_array, anchor_array, engine_array, shadow_array, deadeye_array, basic_array,
+    hunter_array, catalyst_array, hawk_array, sniper_array)
+    {
+        let select = $("#testchart")
+        let mychart = new Chart(select, {
+        type: 'line',
+        data: {
+            labels: dates_array,
+            datasets: [{
+                label: 'Basic',
+                data: basic_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Anchor',
+                data: anchor_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Engine',
+                data: engine_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Hawk',
+                data: hawk_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Deadeye',
+                data: deadeye_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Sniper',
+                data: deadeye_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Shadow',
+                data: shadow_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Catalyst',
+                data: catalyst_array,
+                borderColor: "#cd7f32",
+                fill: false
+            },
+            {
+                label: 'Hunter',
+                data: hunter_array,
+                borderColor: "#cd7f32",
+                fill: false
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+        },
+        });
+    }
+
     //event listeners
+
+
+    </script>
+    <hr>
+    <button type = "button" id = "fitness_button">Squad Fitness</button>
+    <button type = "button" id = "chemistry_button">Chemistry Styles</button>
+    <button type = "button" id = "position_button">Position Modifiers</button>
+    <script>
     $(document).ready(function(){
         getData("fitness");
     });
+    $("#fitness_button").click(function(){
+        getData("fitness");
+    });
+    $("#chemistry_button").click(function(){
+        getData("chemistry");
+    });
+    $("#position_button").click(function(){
+        console.log("here");
+        getData("position");
+    });
     </script>
-    <hr>
     </body></html>
     
