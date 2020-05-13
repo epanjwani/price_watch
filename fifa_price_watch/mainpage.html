@@ -227,7 +227,6 @@
         let retstr = month.concat(" ", day, ", ", year, " ", hour, ":", minute);
         return retstr;
     }
-    
     function getStr(num)
     {
         if (num < 10)
@@ -235,7 +234,6 @@
         else
             return num.toString();
     }
-    
     function generateFitnessChart(dates, bronze, silver, gold)
     {
         let select = $("#testchart")
@@ -280,121 +278,121 @@
             datasets: [{
                 label: 'LWB -> LB',
                 data: lwb_lb_array,
-                borderColor: "#cd7f32",
+                borderColor: "#ABDEE6",
                 fill: false
             },
             {
                 label: 'LB -> LWB',
                 data: lb_lwb_array,
-                borderColor: "#cd7f32",
+                borderColor: "#CBAACB",
                 fill: false
             },
             {
                 label: 'RWB -> RB',
                 data: rwb_rb_array,
-                borderColor: "#cd7f32",
+                borderColor: "#FFFFBS",
                 fill: false
             },
             {
                 label: 'RB -> RWB',
                 data: rb_rwb_array,
-                borderColor: "#cd7f32",
+                borderColor: "#FFCCB6",
                 fill: false
             },
             {
                 label: 'LM -> LW',
                 data: lm_lw_array,
-                borderColor: "#cd7f32",
+                borderColor: "#C6DBDA",
                 fill: false
             },
             {
                 label: 'LW -> LM',
                 data: lw_lm_array,
-                borderColor: "#cd7f32",
+                borderColor: "#F6EAC2",
                 fill: false
             },
             {
                 label: 'RW -> RM',
                 data: rw_rm_array,
-                borderColor: "#cd7f32",
+                borderColor: "#FF968A",
                 fill: false
             },
             {
                 label: 'RM -> RW',
                 data: rm_rw_array,
-                borderColor: "#cd7f32",
+                borderColor: "#D4F0F0",
                 fill: false
             },
             {
                 label: 'LW -> LF',
                 data: lw_lf_array,
-                borderColor: "#cd7f32",
+                borderColor: "#CCE2CB",
                 fill: false
             },
             {
                 label: 'LF -> LW',
                 data: lf_lw_array,
-                borderColor: "#cd7f32",
+                borderColor: "#97C1A9",
                 fill: false
             },
             {
                 label: 'RW -> RF',
                 data: rw_rf_array,
-                borderColor: "#cd7f32",
+                borderColor: "#ECEAE4",
                 fill: false
             },
             {
                 label: 'RF -> RW',
                 data: rf_rw_array,
-                borderColor: "#cd7f32",
+                borderColor: "#55CBCD",
                 fill: false
             },
             {
                 label: 'CM -> CAM',
                 data: cm_cam_array,
-                borderColor: "#cd7f32",
+                borderColor: "#445A67",
                 fill: false
             },
             {
                 label: 'CAM -> CM',
                 data: cam_cm_array,
-                borderColor: "#cd7f32",
+                borderColor: "#50B4D8",
                 fill: false
             },
             {
                 label: 'CM -> CDM',
                 data: cm_cdm_array,
-                borderColor: "#cd7f32",
+                borderColor: "#D7E2EA",
                 fill: false
             },
             {
                 label: 'CDM -> CM',
                 data: cdm_cm_array,
-                borderColor: "#cd7f32",
+                borderColor: "#6E7B8F",
                 fill: false
             },
             {
                 label: 'CAM -> CF',
                 data: cam_cf_array,
-                borderColor: "#cd7f32",
+                borderColor: "#B7EAF7",
                 fill: false
             },
             {
                 label: 'CF -> CAM',
                 data: cf_cam_array,
-                borderColor: "#cd7f32",
+                borderColor: "#187B30",
                 fill: false
             },
             {
                 label: 'CF -> ST',
                 data: cf_st_array,
-                borderColor: "#cd7f32",
+                borderColor: "#B30019",
                 fill: false
             },
             {
                 label: 'ST -> CF',
                 data: st_cf_array,
-                borderColor: "#cd7f32",
+                borderColor: "#BC7576",
                 fill: false
             }]
         },
@@ -403,7 +401,6 @@
         },
         });
     }
-
     function generateChemistryChart(dates_array, anchor_array, engine_array, shadow_array, deadeye_array, basic_array,
     hunter_array, catalyst_array, hawk_array, sniper_array)
     {
@@ -415,55 +412,55 @@
             datasets: [{
                 label: 'Basic',
                 data: basic_array,
-                borderColor: "#cd7f32",
+                borderColor: "#ABDEE6",
                 fill: false
             },
             {
                 label: 'Anchor',
                 data: anchor_array,
-                borderColor: "#cd7f32",
+                borderColor: "#CBAACB",
                 fill: false
             },
             {
                 label: 'Engine',
                 data: engine_array,
-                borderColor: "#cd7f32",
+                borderColor: "#FFFFBS",
                 fill: false
             },
             {
                 label: 'Hawk',
                 data: hawk_array,
-                borderColor: "#cd7f32",
+                borderColor: "#187B30",
                 fill: false
             },
             {
                 label: 'Deadeye',
                 data: deadeye_array,
-                borderColor: "#cd7f32",
+                borderColor: "#ECEAE4",
                 fill: false
             },
             {
                 label: 'Sniper',
                 data: deadeye_array,
-                borderColor: "#cd7f32",
+                borderColor: "#B30019",
                 fill: false
             },
             {
                 label: 'Shadow',
                 data: shadow_array,
-                borderColor: "#cd7f32",
+                borderColor: "#55CBCD",
                 fill: false
             },
             {
                 label: 'Catalyst',
                 data: catalyst_array,
-                borderColor: "#cd7f32",
+                borderColor: "#BC7576",
                 fill: false
             },
             {
                 label: 'Hunter',
                 data: hunter_array,
-                borderColor: "#cd7f32",
+                borderColor: "#FF968A",
                 fill: false
             }]
         },
@@ -473,15 +470,13 @@
         });
     }
 
-    //event listeners
-
-
     </script>
     <hr>
     <button type = "button" id = "fitness_button">Squad Fitness</button>
     <button type = "button" id = "chemistry_button">Chemistry Styles</button>
     <button type = "button" id = "position_button">Position Modifiers</button>
     <script>
+    //event listeners
     $(document).ready(function(){
         getData("fitness");
     });
@@ -492,7 +487,6 @@
         getData("chemistry");
     });
     $("#position_button").click(function(){
-        console.log("here");
         getData("position");
     });
     </script>
