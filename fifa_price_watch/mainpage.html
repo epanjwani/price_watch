@@ -9,8 +9,22 @@
     <div id = "chart_div">
     </div>
     <script>
+    let offset_from_beginning = 0;
     let current_chart;
     let current_req;
+    let current_time;
+    function checkButtons(data_length, time)
+    {
+        if (offset_from_beginning==0)
+            $("#forward_button").hide();
+        else
+            $("#forward_button").show();
+        let pageCounter = -1*Math.floor(data_length/(time*48));
+        if (offset_from_beginning==pageCounter)
+            $("#back_button").hide();
+        else
+            $("#back_button").show();
+    }
     function clearChart()
     {
         $("#chart_div").empty();
@@ -19,8 +33,9 @@
     {
         $("#chart_div").append('<canvas id = "testchart" width="500" height="500"></canvas>');
     }
-    function getData(req, time)//time in days, pass in as 7 for week 
+    function getData(req, time)//time in days, pass in as 7 for week
     {
+        current_time = time;
         current_req = req;
         clearChart();
         let xhttp = new XMLHttpRequest();
@@ -32,16 +47,19 @@
                 if (req == "fitness")
                 {
                     let fitnessdata = data.fitness;
+                    checkButtons(fitnessdata.length, time);
                     processData(fitnessdata, "fitness", time);
                 }
                 else if (req == "position")
                 {
                     let positiondata = data.position;
+                    checkButtons(positiondata.length, time);
                     processData(positiondata, "position", time);
                 }
                 else if (req == "chemistry")
                 {
                     let chemistrydata = data.chemistry;
+                    checkButtons(chemistrydata.length, time);
                     processData(chemistrydata, "chemistry", time);
                 }
             }
@@ -50,42 +68,55 @@
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }
+    function getDateObject(date_str)
+    {
+        let hour = date_str.substring(0,2);
+        let minute = date_str.substring(3,5);
+        let year = date_str.substring(6,10);
+        let month_num = date_str.substring(11,13);
+        let day = date_str.substring(14,16);
+        let date = new Date();
+        date.setFullYear(year);
+        date.setHours(hour);
+        date.setMinutes(minute);
+        date.setDate(day);
+        date.setMonth(((month_num-1)+12)%12);
+        return date;
+    }
     function processData(data, req, time)
     {
-        /*previous 24 hours*/
-        let start = new Date(new Date().getTime() + 4*60*60*1000 - time*24*60*60*1000); //4*60*60*1000 adjusts to UTC
-        let minutes = 0
-        if (start.getMinutes()>=30)
-            minutes = 30;
-        start.setMinutes(minutes);
         let dates_array = [];
         if (req == "fitness")
         {
             let bronze_array = [];
             let silver_array = [];
             let gold_array = [];
-            days_data = data.slice(-2*24*time);
+            let days_data;
+            if (offset_from_beginning == 0)
+                days_data = data.slice(-2*24*time);
+            else
+                days_data = data.slice((((offset_from_beginning*-1)+1)*-2*24*time), ((offset_from_beginning*-1)*-2*24*time));
             for (let i = 0; i < days_data.length; i++)
             {
-                let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
-                /*when implementing timezones, make a new start date object with adjusted date/time, get query from
-                generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
                 let dict = days_data[i];
-                let dateLabel = generateDateLabel(date);
+                let dateLabel;
                 for (let key in dict)
                 {
                     gold_array.push(dict[key].gold);
                     silver_array.push(dict[key].silver);
                     bronze_array.push(dict[key].bronze);
+                    dateLabel = generateDateLabel(key);
                 }
                 dates_array.push(dateLabel);
             }
+            console.log(dates_array);
+            console.log(days_data);
             generateFitnessChart(dates_array, bronze_array, silver_array, gold_array);       
         }
         else if (req == "position")
         {
-            let lwb_lb_array = [];
-            let lb_lwb_array = [];
+            let lwb_lb_array = []
+            let lb_lwb_array = []
             let rwb_rb_array = []
             let rb_rwb_array = []
             let lm_lw_array = []
@@ -104,14 +135,15 @@
             let cdm_cm_array = []
             let cf_st_array = []
             let st_cf_array = []
-            days_data = data.slice(-2*24*time);
+            let days_data;
+            if (offset_from_beginning == 0)
+                days_data = data.slice(-2*24*time);
+            else
+                days_data = data.slice((((offset_from_beginning*-1)+1)*-2*24*time), ((offset_from_beginning*-1)*-2*24*time));
             for (let i = 0; i < days_data.length; i++)
             {
-                let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
-                /*when implementing timezones, make a new start date object with adjusted date/time, get query from
-                generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
                 let dict = days_data[i];
-                let dateLabel = generateDateLabel(date);
+                let dateLabel;
                 for (let key in dict)
                 {
                     lwb_lb_array.push(dict[key].lwb_lb);
@@ -134,6 +166,7 @@
                     cf_cam_array.push(dict[key].cf_cam);
                     cf_st_array.push(dict[key].cf_st);
                     st_cf_array.push(dict[key].st_cf);
+                    dateLabel = generateDateLabel(key);
                 }
                 dates_array.push(dateLabel);
             }
@@ -152,14 +185,15 @@
             let catalyst_array = []
             let hawk_array = []
             let sniper_array = []
-            days_data = data.slice(-2*24*time);
+            let days_data;
+            if (offset_from_beginning == 0)
+                days_data = data.slice(-2*24*time);
+            else
+                days_data = data.slice((((offset_from_beginning*-1)+1)*-2*24*time), ((offset_from_beginning*-1)*-2*24*time));
             for (let i = 0; i < days_data.length; i++)
             {
-                let date = generateQuery(new Date(start.getTime() + i*30*60*1000));
-                /*when implementing timezones, make a new start date object with adjusted date/time, get query from
-                generateQuery, but don't use query -> instead convert to label using generateDateLabel*/
                 let dict = days_data[i];
-                let dateLabel = generateDateLabel(date);
+                let dateLabel;
                 for (let key in dict)
                 {
                     anchor_array.push(dict[key].anchor);
@@ -171,6 +205,7 @@
                     catalyst_array.push(dict[key].catalyst);
                     hawk_array.push(dict[key].hawk);
                     sniper_array.push(dict[key].sniper);
+                    dateLabel = generateDateLabel(key);
                 }
                 dates_array.push(dateLabel);
             }
@@ -496,6 +531,9 @@
     <button type = "button" id = "position_button">Position Modifiers</button>
     <button type = "button" id = "day_button">Day</button>
     <button type = "button" id = "week_button">Week</button>
+    <button type = "button" id = "forward_button">--></button>
+    <button type = "button" id = "back_button"><--</button>
+
     <script>
     //event listeners
     $(document).ready(function(){
@@ -512,10 +550,21 @@
     });
     $("#day_button").click(function(){
         getData(current_req, 1);
+        offset_from_beginning=0;
     });
     $("#week_button").click(function(){
         getData(current_req, 7);
+        offset_from_beginning=0;
     });
+    $("#back_button").click(function(){
+        offset_from_beginning--;
+        getData(current_req, current_time);
+    });
+    $("#forward_button").click(function(){
+        offset_from_beginning++;
+        getData(current_req, current_time);
+    });
+
     </script>
     </body></html>
     
