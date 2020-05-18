@@ -1,4 +1,7 @@
 import json
+import mysql.connector
+from mysql.connector import Error
+import os
 
 def processData():
     with open('/home/ep/public_html/price_watch/fifa_price_watch/data.json') as data_file:
@@ -6,9 +9,28 @@ def processData():
         fitnessdata = (data['fitness'])[-3:]
         positiondata = (data['position'])[-3:]
         chemistrydata = (data['chemistry'])[-3:]
-        processFitnessData(fitnessdata)
-        processChemistryData(chemistrydata)
-        processPositionData(positiondata)
+        fit = processFitnessData(fitnessdata)
+        chem = processChemistryData(chemistrydata)
+        pos = processPositionData(positiondata)
+        try:
+            connection = mysql.connector.connect(host='localhost', database='fifa20_consumable_prices', user=os.environ.get('db_user'), password = os.environ.get('db_pass'))
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                cursor = connection.cursor()
+                fitness_query = "INSERT INTO fitness (date, bronze_squad_fitness, silver_squad_fitness, gold_squad_fitness) VALUES (%s, %s, %s, %s)"
+                position_query = "INSERT INTO position (date, lwb_lb, lb_lwb, rwb_rb, rb_rwb, lm_lw, lw_lm, rw_rm, rm_rw, lw_lf, lf_lw, rw_rf, rf_rw, cm_cam, cam_cm, cdm_cm, cm_cdm, cam_cf, cf_cam, cf_st, st_cf) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                chemistry_query = "INSERT INTO chemistry (date, basic, sniper, hunter, catalyst, shadow, engine, deadeye, hawk, anchor) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute(fitness_query, fit)
+                cursor.execute(position_query, pos)
+                cursor.execute(chemistry_query, chem)
+                connection.commit()
+                print("Connected to MySQL Server version ", db_Info)
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+        finally:
+            if (connection.is_connected()):
+                connection.close()
+                print("MySQL connection is closed")
 
 def isDateValid(date):
     minute = int(date[3:5])
@@ -47,6 +69,8 @@ def processFitnessData(data):
     goldprice = getProcessedValue('goldsquadfitness', data)
     silverprice = getProcessedValue('silversquadfitness', data)
     bronzeprice = getProcessedValue('bronzesquadfitness', data)
+    ret = (newDate, bronzeprice, silverprice, goldprice)
+    return ret
 
 def processPositionData(data):
     date = None
@@ -79,6 +103,8 @@ def processPositionData(data):
     cf_cam = getProcessedValue('cf_cam', data)
     cf_st = getProcessedValue('cf_st', data)
     st_cf = getProcessedValue('st_cf', data)
+    ret = (newDate, lwb_lb, lb_lwb, rwb_rb, rb_rwb, lm_lw, lw_lm, rw_rm, rm_rw, lw_lf, lf_lw, rw_rf, rf_rw, cm_cam, cam_cm, cdm_cm, cm_cdm, cam_cf, cf_cam, cf_st, st_cf)
+    return ret
 
 def processChemistryData(data):
     date = None
@@ -100,7 +126,8 @@ def processChemistryData(data):
     deadeye = getProcessedValue('deadeye', data)
     hawk = getProcessedValue('hawk', data)
     anchor = getProcessedValue('anchor', data)
+    ret = (newDate, basic, sniper, hunter, catalyst, shadow, engine, deadeye, hawk, anchor)
+    return ret
 
-
-
+processData()
 
