@@ -29,7 +29,7 @@ function getData(req, time)//time in days, pass in as 7 for week
             }
         }
     };
-    xhttp.open("GET", "processed_data.json");
+    xhttp.open("GET", "http://ec2-18-188-83-141.us-east-2.compute.amazonaws.com/~ep/price_watch/fifa_price_watch/data/processed_data.json");
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
