@@ -21,7 +21,4 @@
 <button type = "button" id = "back_button"><--</button>
 <script type = "text/javascript" src = "js/listeners.js"></script>
 
-<?php
-    require 'php/database.php';
-?>
 </body></html>
