@@ -14,6 +14,7 @@ function getData(type, length)
         url: request_url,
         success: function(unparsed_data){
             data = JSON.parse(unparsed_data);
+            checkButtons(data.length, length);
             if (type == "fitness")
                 generateFitnessChart(data[0], data[3], data[2], data[1]);
             else if (type == "position")

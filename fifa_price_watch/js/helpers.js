@@ -10,8 +10,10 @@ function checkButtons(data_length, time)
         $("#forward_button").hide();
     else
         $("#forward_button").show();
-    let pageCounter = -1*Math.floor(data_length/(time*48));
-    if (offset_from_beginning==pageCounter)
+    let currDate = new Date();
+    let UTCDate = new Date(currDate.getTime() + 1000*60*60*timezone_offset + 1000*60*60*24*time*(offset_from_beginning-1));
+    let startDate = new Date(2020, 4, 7, 03, 0, 0, 0);
+    if (startDate.getTime() >= UTCDate.getTime())
         $("#back_button").hide();
     else
         $("#back_button").show();
