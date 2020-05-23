@@ -43,7 +43,12 @@ if ($table == "fitness")
             date_add($startDate, date_interval_create_from_date_string("30 minutes"));
         }
     }
-    $data = array($date_arr, $gold_arr, $silver_arr, $bronze_arr);
+    $data = [
+        'date' => $date_arr, 
+        'gold' => $gold_arr, 
+        'silver' => $silver_arr, 
+        'bronze' => $bronze_arr
+    ];
     echo json_encode($data);
 }
 elseif ($table == "position")
@@ -131,7 +136,29 @@ elseif ($table == "position")
             date_add($startDate, date_interval_create_from_date_string("30 minutes"));
         }
     }
-    $data = array($date_arr, $lwb_lb_array, $lb_lwb_array, $rwb_rb_array, $rb_rwb_array, $lm_lw_array, $lw_lm_array, $rw_rm_array, $rm_rw_array, $lw_lf_array, $lf_lw_array, $rw_rf_array, $rf_rw_array, $cm_cam_array, $cam_cm_array, $cam_cf_array, $cf_cam_array, $cm_cdm_array, $cdm_cm_array, $cf_st_array, $st_cf_array);
+    $data = [
+        'date' => $date_arr, 
+        'lwb_lb' => $lwb_lb_array, 
+        'lb_lwb' => $lb_lwb_array, 
+        'rwb_rb' => $rwb_rb_array, 
+        'rb_rwb' => $rb_rwb_array, 
+        'lm_lw' => $lm_lw_array, 
+        'lw_lm' => $lw_lm_array, 
+        'rw_rm' => $rw_rm_array, 
+        'rm_rw' => $rm_rw_array, 
+        'lw_lf' => $lw_lf_array, 
+        'lf_lw' => $lf_lw_array, 
+        'rw_rf' => $rw_rf_array, 
+        'rf_rw' => $rf_rw_array, 
+        'cm_cam' => $cm_cam_array, 
+        'cam_cm' => $cam_cm_array, 
+        'cam_cf' => $cam_cf_array, 
+        'cf_cam' => $cf_cam_array, 
+        'cm_cdm' => $cm_cdm_array, 
+        'cdm_cm' => $cdm_cm_array, 
+        'cf_st' => $cf_st_array, 
+        'st_cf' => $st_cf_array
+    ];
     echo json_encode($data);
 }
 elseif ($table == "chemistry")
@@ -171,7 +198,7 @@ elseif ($table == "chemistry")
         else
         {
             $stmt->execute();
-            $stmt->bind_result($anchor, $hawk, $engine, $deadeye, $basic, $shadow, $hunter, $catalyst, $sniper);
+            $stmt->bind_result($basic, $sniper, $hunter, $catalyst, $shadow, $engine, $deadeye, $hawk, $anchor);
             $stmt->fetch();
             array_push($anchor_array, $anchor);
             array_push($hawk_array, $hawk);
@@ -186,7 +213,18 @@ elseif ($table == "chemistry")
             date_add($startDate, date_interval_create_from_date_string("30 minutes"));
         }
     }
-    $data = array($date_arr, $anchor_array, $hawk_array, $engine_array, $deadeye_array, $basic_array, $shadow_array, $hunter_array, $catalyst_array, $sniper_array);
+    $data = [
+        'date' => $date_arr, 
+        'anchor' => $anchor_array, 
+        'hawk' => $hawk_array, 
+        'engine' => $engine_array, 
+        'deadeye' => $deadeye_array, 
+        'basic' => $basic_array, 
+        'shadow' => $shadow_array, 
+        'hunter' => $hunter_array, 
+        'catalyst' => $catalyst_array, 
+        'sniper' => $sniper_array
+    ];
     echo json_encode($data);
 }
 
