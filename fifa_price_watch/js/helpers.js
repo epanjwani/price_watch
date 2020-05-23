@@ -20,9 +20,6 @@ function checkButtons(data_length, time)
 }
 function clearChart()
 {
-    $("#chart_div").empty();
-}
-function createCanvas()
-{
-    $("#chart_div").append('<canvas id = "testchart" width="500" height="500"></canvas>');
+    if(current_chart)
+        current_chart.destroy();
 }

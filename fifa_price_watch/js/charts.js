@@ -1,6 +1,5 @@
 function generateFitnessChart(dates, bronze, silver, gold)
 {
-    createCanvas();
     let select = $("#testchart")
     currentchart = new Chart(select, {
     type: 'line',
@@ -22,7 +21,7 @@ function generateFitnessChart(dates, bronze, silver, gold)
             label: 'Gold Squad Fitness',
             data: gold,
             borderColor: "#FFD700",
-            fill:false
+            fill: false
         }]
     },
     options: {
@@ -38,7 +37,6 @@ function generatePositionChart(dates_array, lwb_lb_array, lb_lwb_array, rwb_rb_a
 lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, 
 cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_array, st_cf_array)
 {
-    createCanvas();
     let select = $("#testchart")
     currentchart = new Chart(select, {
     type: 'line',
@@ -176,7 +174,6 @@ cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_arra
 function generateChemistryChart(dates_array, anchor_array, hawk_array, engine_array, deadeye_array,
 basic_array, shadow_array, hunter_array, catalyst_array, sniper_array)
 {
-    createCanvas();
     let select = $("#testchart")
     currentchart = new Chart(select, {
     type: 'line',
