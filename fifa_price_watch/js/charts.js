@@ -29,13 +29,14 @@ function generateFitnessChart(dates, bronze, silver, gold)
         maintainAspectRatio: false,
         events: ['click'],
         animation: false,
+        spanGaps: true,
     },
     });
 }
 
 function generatePositionChart(dates_array, lwb_lb_array, lb_lwb_array, rwb_rb_array, rb_rwb_array, lm_lw_array, 
-lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, cam_cm_array, 
-cm_cdm_array, cam_cf_array, cf_cam_array, cdm_cm_array, cf_st_array, st_cf_array)
+lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, 
+cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_array, st_cf_array)
 {
     createCanvas();
     let select = $("#testchart")
@@ -168,11 +169,12 @@ cm_cdm_array, cam_cf_array, cf_cam_array, cdm_cm_array, cf_st_array, st_cf_array
         maintainAspectRatio: false,
         events: ['click'],
         animation: false,
+        spanGaps: true,
     },
     });
 }
-function generateChemistryChart(dates_array, anchor_array, engine_array, shadow_array, deadeye_array, basic_array,
-hunter_array, catalyst_array, hawk_array, sniper_array)
+function generateChemistryChart(dates_array, anchor_array, hawk_array, engine_array, deadeye_array,
+basic_array, shadow_array, hunter_array, catalyst_array, sniper_array)
 {
     createCanvas();
     let select = $("#testchart")
@@ -239,6 +241,7 @@ hunter_array, catalyst_array, hawk_array, sniper_array)
         maintainAspectRatio: false,
         events: ['click'],
         animation: false,
+        spanGaps: true,
     },
     });
 }
