@@ -5,6 +5,11 @@
 {
     margin-top:10px;
 }
+#left_arrow
+{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 
 p{
     font-family: Verdana,sans-serif;
