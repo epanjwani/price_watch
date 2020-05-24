@@ -14,7 +14,7 @@ function getData(type, length)
         url: request_url,
         success: function(unparsed_data){
             data = JSON.parse(unparsed_data);
-            console.log(data);
+            updateDisplayText(data['date'][0], data['date'][data['date'].length -1]);
             checkButtons(data.length, length);
             if (type == "fitness")
                 generateFitnessChart(data['date'], data['bronze'], data['silver'], data['gold']);

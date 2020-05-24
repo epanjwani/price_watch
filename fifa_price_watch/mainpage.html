@@ -22,21 +22,19 @@
     <div class = "container-fluid">
         <div class = "row">
             <div class = "col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                <nav class="navbar navbar-expand-sm navbar-light">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item active">
-                            <a class="nav-link" href = "#" id = "fitness_button">Squad Fitness</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id = "position_button">Position Modifiers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id = "chemistry_button">Chemistry Styles</a>
-                        </li>
-                    </ul>
+                <nav class="nav nav-pills flex-column flex-sm-row"> 
+                    <a class="flex-sm-fill text-sm-center nav-link active"
+                       href="#" id = "fitness_button">Squad Fitness</a> 
+                    <a class="flex-sm-fill text-sm-center nav-link active" 
+                       href="#" id = "chemistry_button">Chemistry Styles</a> 
+                    <a class="flex-sm-fill text-sm-center nav-link active" 
+                       href="#" id = "position_button">Position Modifiers</a> 
                 </nav>
+                <div class = "text-center">
+                    <p id = "display_text"></p>
+                </div>
                 <div id = "chart_div">
-                    <canvas id = "testchart" width="450" height="450"></canvas>
+                    <canvas id = "testchart" width="400" height="400"></canvas>
                 </div>
                 <nav class="nav nav-pills flex-column flex-sm-row"> 
                     <a class="flex-sm-fill text-sm-center nav-link active"

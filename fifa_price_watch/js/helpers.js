@@ -23,3 +23,8 @@ function clearChart()
     if(current_chart)
         current_chart.destroy();
 }
+function updateDisplayText(current_start, current_end)
+{
+    let displaystr = current_start.concat(" to ", current_end);
+    $("#display_text").html(displaystr);
+}
