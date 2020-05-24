@@ -11,12 +11,12 @@ $("#position_button").click(function(){
     getData("position", 1);
 });
 $("#day_button").click(function(){
-    getData(current_req, 1);
     offset_from_beginning=0;
+    getData(current_req, 1);
 });
 $("#week_button").click(function(){
-    getData(current_req, 7);
     offset_from_beginning=0;
+    getData(current_req, 7);
 });
 $("#back_button").click(function(){
     offset_from_beginning--;
