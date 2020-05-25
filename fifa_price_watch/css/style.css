@@ -102,3 +102,7 @@ body
     font-weight: bolder;
 }
 
+#github
+{
+    float:right !important;
+}
