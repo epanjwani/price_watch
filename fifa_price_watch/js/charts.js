@@ -33,7 +33,7 @@ function generateFitnessChart(dates, bronze, silver, gold)
             yAxes: [{
             scaleLabel: {
                 display: true,
-                labelString: 'Lowest BIN Price'
+                labelString: 'Average Lowest BIN Price'
             }
         }]
     },
@@ -180,7 +180,7 @@ cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_arra
             yAxes: [{
             scaleLabel: {
                 display: true,
-                labelString: 'Lowest BIN Price'
+                labelString: 'Average Lowest BIN Price'
             }
         }]
     },
@@ -259,7 +259,7 @@ basic_array, shadow_array, hunter_array, catalyst_array, sniper_array)
             yAxes: [{
             scaleLabel: {
                 display: true,
-                labelString: 'Lowest BIN Price'
+                labelString: 'Average Lowest BIN Price'
             }
         }]
     },

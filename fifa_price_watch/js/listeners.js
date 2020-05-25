@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    setDateAndTime();
     getData("fitness", 1);
 });
 $("#fitness_button").click(function(){
