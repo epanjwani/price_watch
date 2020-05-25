@@ -29,6 +29,14 @@ function generateFitnessChart(dates, bronze, silver, gold)
         events: ['click'],
         animation: false,
         spanGaps: true,
+        scales: {
+            yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Lowest BIN Price'
+            }
+        }]
+    },
     },
     });
 }
@@ -168,6 +176,14 @@ cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_arra
         events: ['click'],
         animation: false,
         spanGaps: true,
+        scales: {
+            yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Lowest BIN Price'
+            }
+        }]
+    },
     },
     });
 }
@@ -239,6 +255,14 @@ basic_array, shadow_array, hunter_array, catalyst_array, sniper_array)
         events: ['click'],
         animation: false,
         spanGaps: true,
+        scales: {
+            yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Lowest BIN Price'
+            }
+        }]
+    },
     },
     });
 }
