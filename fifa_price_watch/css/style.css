@@ -72,6 +72,7 @@ p{
 }
 body
 {
+    background-color: white !important;
     height: 100%;
     overflow: hidden;
 }
@@ -84,7 +85,7 @@ body
     position:absolute;
     overflow:scroll !important;
     border: rgb(0, 134, 67) solid 2px;
-    border-radius: 20px;
+    border-radius: 10px;
     height: 100%;
     width: 92%;
     top:0;
@@ -105,6 +106,7 @@ body
 }
 .entry{
     border-bottom: rgb(98, 163, 131) solid 2px;
+    background-color: white;
 }
 
 .card_name
