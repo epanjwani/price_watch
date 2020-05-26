@@ -92,7 +92,7 @@ body
 }
 .divider
 {
-    height: 8%;
+    height: 50px;
     background-color: rgb(0, 134, 67);
     border-bottom: rgb(255, 255, 255) solid 0.1px;
     display: flex;
@@ -100,4 +100,29 @@ body
     align-items: center;
     color:white;
     font-weight: bolder;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.entry{
+    border-bottom: rgb(98, 163, 131) solid 2px;
+}
+
+.card_name
+{
+    text-align: center;
+    font-weight:bold;
+    color: rgb(0, 134, 67);
+    text-transform: capitalize;
+}
+
+#position_container .card_name {
+    text-transform: uppercase;
+}
+
+ .min, .max, .current
+{
+    margin-left: 2%;
+    line-height: 5px;
+    font-size: 12px;
+    color: rgb(0, 134, 67);
 }
