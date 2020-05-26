@@ -68,7 +68,7 @@ if (!$pos_stmt)
 }
 else{
 $pos_stmt->execute();
-$pos_stmt->bind_result($min_lwb_lb, $min_lb_lwb, $min_rwb_rb, $min_rb_rwb, $min_lm_lw, $min_lw_lm, $min_rw_rm, $min_m_rw, $min_lw_lf, $min_lf_lw, $min_rw_rf, $min_rf_rw, $min_cm_cam, $min_cam_cm, $min_cdm_cm, $min_cm_cdm, $min_cam_cf, $min_cf_cam, $min_cf_st, $min_st_cf, $max_lwb_lb, $max_lb_lwb, $max_rwb_rb, $max_rb_rwb, $max_lm_lw, $max_lw_lm, $max_rw_rm, $max_rm_rw, $max_lw_lf, $max_lf_lw, $max_rw_rf, $max_rf_rw, $max_cm_cam, $max_cam_cm, $max_cdm_cm, $max_cm_cdm, $max_cam_cf, $max_cf_cam, $max_cf_st, $max_st_cf);
+$pos_stmt->bind_result($min_lwb_lb, $min_lb_lwb, $min_rwb_rb, $min_rb_rwb, $min_lm_lw, $min_lw_lm, $min_rw_rm, $min_rm_rw, $min_lw_lf, $min_lf_lw, $min_rw_rf, $min_rf_rw, $min_cm_cam, $min_cam_cm, $min_cdm_cm, $min_cm_cdm, $min_cam_cf, $min_cf_cam, $min_cf_st, $min_st_cf, $max_lwb_lb, $max_lb_lwb, $max_rwb_rb, $max_rb_rwb, $max_lm_lw, $max_lw_lm, $max_rw_rm, $max_rm_rw, $max_lw_lf, $max_lf_lw, $max_rw_rf, $max_rf_rw, $max_cm_cam, $max_cam_cm, $max_cdm_cm, $max_cm_cdm, $max_cam_cf, $max_cf_cam, $max_cf_st, $max_st_cf);
 $pos_stmt->fetch();
 $pos_stmt->close();
 }

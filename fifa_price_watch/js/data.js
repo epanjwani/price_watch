@@ -39,7 +39,11 @@ function getSidebarData()
         url: request_url,
         success: function(unparsed_data){
             data = JSON.parse(unparsed_data);
-            console.log(data);
+            for (let key in data)
+            {
+                for (let innerkey in data[key])
+                    createDataDiv(key, innerkey, (data[key])[innerkey])
+            }
         }
     });
 }
