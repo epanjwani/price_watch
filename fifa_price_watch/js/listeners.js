@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    setDateAndTime();
     getData("fitness", 1);
+    getSidebarData();
 });
 $("#fitness_button").click(function(){
     getData("fitness", 1);

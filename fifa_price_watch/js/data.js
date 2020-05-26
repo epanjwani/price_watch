@@ -25,3 +25,21 @@ function getData(type, length)
         }
     });
 }
+
+function getSidebarData()
+{
+    let initial = new Date();
+    initial.setHours(0);
+    initial.setMinutes(0);
+    let initial_utc = initial.toUTCString();
+    let request_url = ("http://ec2-18-188-83-141.us-east-2.compute.amazonaws.com/~ep/price_watch/fifa_price_watch/php/getsidebardata.php").concat(
+    "?initial_utc=", initial_utc); 
+    $.ajax({
+        method: "GET",
+        url: request_url,
+        success: function(unparsed_data){
+            data = JSON.parse(unparsed_data);
+            console.log(data);
+        }
+    });
+}
