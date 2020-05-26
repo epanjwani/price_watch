@@ -28,3 +28,36 @@ function updateDisplayText(current_start, current_end)
     let displaystr = current_start.concat(" to ", current_end);
     $("#display_text").html(displaystr);
 }
+
+function selectedState()
+{
+    switch(current_req)
+    {
+        case "fitness":
+            $("#fitness_button").addClass("selected");
+            break;
+        case "position":
+            $("#position_button").addClass("selected");
+            break;
+        case "chemistry":
+            $("#chemistry_button").addClass("selected");
+            break;
+    }
+    switch(current_time)
+    {
+        case 1:
+            $("#day_button").addClass("selected");
+            break;
+        case 7:
+            $("#week_button").addClass("selected");
+            break;
+    }
+}
+
+function clearSelectedState(){
+    $("#fitness_button").removeClass("selected");
+    $("#position_button").removeClass("selected");
+    $("#chemistry_button").removeClass("selected");
+    $("#day_button").removeClass("selected");
+    $("#week_button").removeClass("selected");
+}

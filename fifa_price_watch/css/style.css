@@ -8,6 +8,12 @@
     background-color: white !important;
     border:#007bff solid 1px;
 } 
+.selected
+{
+    color:#007bff !important;
+    background-color: white !important;
+    border:#007bff solid 1px !important;
+}
 .nav-pills a > #right_arrow_blue
 {
     display: none;
@@ -128,3 +134,4 @@ body
     font-size: 12px;
     color: rgb(0, 134, 67);
 }
+

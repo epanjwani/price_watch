@@ -2,7 +2,9 @@ function getData(type, length)
 {
     current_time = length;
     current_req = type;
+    clearSelectedState();
     clearChart();
+    selectedState();
     let now = new Date();
     timezone_offset = now.getTimezoneOffset()/60;
     let startTime = (new Date(now.getTime() - 1000*60*60*24*length + 1000*60*60*24*length*offset_from_beginning)).toUTCString();

@@ -3,13 +3,13 @@ $(document).ready(function(){
     getSidebarData();
 });
 $("#fitness_button").click(function(){
-    getData("fitness", 1);
+    getData("fitness", current_time);
 });
 $("#chemistry_button").click(function(){
-    getData("chemistry", 1);
+    getData("chemistry", current_time);
 });
 $("#position_button").click(function(){
-    getData("position", 1);
+    getData("position", current_time);
 });
 $("#day_button").click(function(){
     offset_from_beginning=0;
