@@ -97,8 +97,14 @@ body
     top:0;
     bottom:0;
 }
+.sidebar_container
+{
+    position: sticky;
+}
 .divider
 {
+    position: sticky;
+    top: 0;
     height: 50px;
     background-color: rgb(0, 134, 67);
     border-bottom: rgb(255, 255, 255) solid 0.1px;
