@@ -8,6 +8,8 @@ function createDataDiv(category, card, data, favorite)
     let innerdiv = $(("<div></div>"));
     innerdiv.attr("class", "entry");
     let idstr = category.concat(".", card);
+    if (favorite)
+        idstr = idstr.concat(".favorite");
     innerdiv.attr("id", idstr);
     let originalname = card;
     if (category == "position")
@@ -15,7 +17,11 @@ function createDataDiv(category, card, data, favorite)
     let name = $(("<p class='card_name'>").concat(card, "</p>"));
     let minprice = $(("<p class = 'min'>Min avg BIN today: ").concat(data["min"], "</p>"));
     let star_id = originalname.concat("_star");
-    let img_string = ("<img src = 'img/star.png' class = 'favoriteicon' onmouseover= this.src='img/goldstar.png' onmouseout= this.src='img/star.png' onclick = updateFavorites('").concat(idstr, "')>");
+    let img_string;
+    if (favorite || favorites.includes(idstr))
+        img_string = ("<img src = 'img/goldstar.png' class = 'favoriteicon' onmouseover= this.src='img/star.png' onmouseout= this.src='img/goldstar.png' onclick = updateFavorites('").concat(idstr, "')>");
+    else
+        img_string = ("<img src = 'img/star.png' class = 'favoriteicon' onmouseover= this.src='img/goldstar.png' onmouseout= this.src='img/star.png' onclick = updateFavorites('").concat(idstr, "')>");
     let img = $(img_string);
     let maxprice = $(("<p class = 'max'>Max avg BIN today: ").concat(data["max"], "</p>"));
     let currentprice = $(("<p class = 'current'>Current avg BIN: ").concat(data["current"], "</p>"));
@@ -29,13 +35,13 @@ function createDataDiv(category, card, data, favorite)
 
 function updateFavorites(card)
 {
+    card = card.replace(".favorite", "");
     if (favorites.includes(card))
-    {
         favorites.splice(favorites.indexOf(card), 1);
-    }
     else
         favorites.push(card);
     updateFavoritesSection(sidebar_data);
+    getSidebarData();
 }
 
 function updateFavoritesSection(data)

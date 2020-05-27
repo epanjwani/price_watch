@@ -63,3 +63,9 @@ function clearSelectedState(){
     $("#day_button").removeClass("selected");
     $("#week_button").removeClass("selected");
 }
+
+function clearDivs(){
+    $("#fitness_container").empty();
+    $("#chemistry_container").empty();
+    $("#position_container").empty();
+}

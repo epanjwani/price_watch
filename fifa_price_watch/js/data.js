@@ -30,6 +30,10 @@ function getData(type, length)
 
 function getSidebarData()
 {
+    clearDivs();
+    $("#fitness_container").append("<div id = 'fitness_section' class = 'divider'>Squad Fitness</div>");
+    $("#chemistry_container").append("<div id = 'chemisty_section' class = 'divider'>Chemistry Styles</div>");
+    $("#position_container").append("<div id = 'position_section' class = 'divider'>Position Modifiers</div>");
     let initial = new Date();
     initial.setHours(0);
     initial.setMinutes(0);
@@ -41,13 +45,13 @@ function getSidebarData()
         url: request_url,
         success: function(unparsed_data){
             let data = JSON.parse(unparsed_data);
+            loadLocalStorage(data);
             for (let key in data)
             {
                 for (let innerkey in data[key])
                     createDataDiv(key, innerkey, (data[key])[innerkey], false);
             }
             sidebar_data = data;
-            loadLocalStorage(data);
         }
     });
 }
