@@ -115,6 +115,7 @@ body
     font-weight: bolder;
     padding-top:5px;
     padding-bottom:5px;
+    z-index: 100;
 }
 .entry{
     border-bottom: rgb(98, 163, 131) solid 2px;
@@ -128,16 +129,23 @@ body
     color: rgb(0, 134, 67);
     text-transform: capitalize;
 }
-
 #position_container .card_name {
     text-transform: uppercase;
 }
-
  .min, .max, .current
 {
     margin-left: 2%;
     line-height: 5px;
     font-size: 12px;
     color: rgb(0, 134, 67);
+    display: block;
+}
+
+.favoriteicon
+{
+    width: 30px;
+    float: right;
+    -webkit-transform: translate(-100%,-50%);
+    transform: translate(-50%,-75%);
 }
 

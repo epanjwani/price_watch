@@ -3,6 +3,7 @@ let current_chart;
 let current_req;
 let current_time;
 let timezone_offset = new Date().getTimezoneOffset();
+let favorites = [];
 
 function checkButtons(data_length, time)
 {
