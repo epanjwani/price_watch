@@ -2,7 +2,6 @@
     margin-left: 1%;
     border:white solid 1px;
 } 
-
 .nav-pills a:hover {
     color:#007bff !important;
     background-color: white !important;
@@ -129,7 +128,7 @@ body
     color: rgb(0, 134, 67);
     text-transform: capitalize;
 }
-#position_container .card_name {
+.card_name {
     text-transform: uppercase;
 }
  .min, .max, .current

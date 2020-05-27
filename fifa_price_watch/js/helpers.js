@@ -4,6 +4,7 @@ let current_req;
 let current_time;
 let timezone_offset = new Date().getTimezoneOffset();
 let favorites = [];
+let sidebar_data;
 
 function checkButtons(data_length, time)
 {

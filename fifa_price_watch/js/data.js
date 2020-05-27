@@ -40,12 +40,14 @@ function getSidebarData()
         method: "GET",
         url: request_url,
         success: function(unparsed_data){
-            data = JSON.parse(unparsed_data);
+            let data = JSON.parse(unparsed_data);
             for (let key in data)
             {
                 for (let innerkey in data[key])
-                    createDataDiv(key, innerkey, (data[key])[innerkey])
+                    createDataDiv(key, innerkey, (data[key])[innerkey], false);
             }
+            sidebar_data = data;
+            loadLocalStorage(data);
         }
     });
 }
