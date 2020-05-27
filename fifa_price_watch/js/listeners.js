@@ -1,6 +1,7 @@
 $(document).ready(function(){
     getData("fitness", 1);
     getSidebarData();
+    updateFavoritesSection();
 });
 $("#fitness_button").click(function(){
     getData("fitness", current_time);
