@@ -3,7 +3,6 @@ function getData(type, length)
     current_time = length;
     current_req = type;
     clearSelectedState();
-    clearChart();
     selectedState();
     let now = new Date();
     timezone_offset = now.getTimezoneOffset()/60;

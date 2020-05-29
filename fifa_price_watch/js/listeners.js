@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    getData("fitness", 1);
+    initializeChart();
     getSidebarData();
 });
 $("#fitness_button").click(function(){

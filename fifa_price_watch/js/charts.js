@@ -1,11 +1,7 @@
 function generateFitnessChart(dates, bronze, silver, gold)
 {
-    let select = $("#testchart")
-    currentchart = new Chart(select, {
-    type: 'line',
-    data: {
-        labels: dates,
-        datasets: [{
+    let label = dates;
+    let dataset = [{
             label: 'Bronze Squad Fitness',
             data: bronze,
             borderColor: "#cd7f32",
@@ -22,35 +18,16 @@ function generateFitnessChart(dates, bronze, silver, gold)
             data: gold,
             borderColor: "#FFD700",
             fill: false
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        events: ['click'],
-        animation: false,
-        spanGaps: true,
-        scales: {
-            yAxes: [{
-            scaleLabel: {
-                display: true,
-                labelString: 'Average Lowest BIN Price'
-            }
-        }]
-    },
-    },
-    });
+        }];
+    updateChart(label, dataset);
 }
 
 function generatePositionChart(dates_array, lwb_lb_array, lb_lwb_array, rwb_rb_array, rb_rwb_array, lm_lw_array, 
 lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, 
 cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_array, st_cf_array)
 {
-    let select = $("#testchart")
-    currentchart = new Chart(select, {
-    type: 'line',
-    data: {
-        labels: dates_array,
-        datasets: [{
+    let label = dates_array;
+    let dataset = [{
             label: 'LWB -> LB',
             data: lwb_lb_array,
             borderColor: "#ABDEE6",
@@ -169,33 +146,14 @@ cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_arra
             data: st_cf_array,
             borderColor: "#BC7576",
             fill: false
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        events: ['click'],
-        animation: false,
-        spanGaps: true,
-        scales: {
-            yAxes: [{
-            scaleLabel: {
-                display: true,
-                labelString: 'Average Lowest BIN Price'
-            }
-        }]
-    },
-    },
-    });
+        }];
+    updateChart(label, dataset);
 }
 function generateChemistryChart(dates_array, anchor_array, hawk_array, engine_array, deadeye_array,
 basic_array, shadow_array, hunter_array, catalyst_array, sniper_array)
 {
-    let select = $("#testchart")
-    currentchart = new Chart(select, {
-    type: 'line',
-    data: {
-        labels: dates_array,
-        datasets: [{
+    let label = dates_array;
+    let dataset = [{
             label: 'Basic',
             data: basic_array,
             borderColor: "#ABDEE6",
@@ -248,21 +206,15 @@ basic_array, shadow_array, hunter_array, catalyst_array, sniper_array)
             data: hunter_array,
             borderColor: "#FF968A",
             fill: false
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        events: ['click'],
-        animation: false,
-        spanGaps: true,
-        scales: {
-            yAxes: [{
-            scaleLabel: {
-                display: true,
-                labelString: 'Average Lowest BIN Price'
-            }
-        }]
-    },
-    },
+        }];
+    updateChart(label, dataset);
+}
+
+function updateChart(label, dataset)
+{
+    current_chart.config.data.datasets = dataset;
+    current_chart.config.data.labels = label;
+    current_chart.update({
+        duration: 0,
     });
 }

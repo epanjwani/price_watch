@@ -22,7 +22,7 @@ function checkButtons(data_length, time)
 }
 function clearChart()
 {
-    if(current_chart)
+    if (current_chart)
         current_chart.destroy();
 }
 function updateDisplayText(current_start, current_end)
@@ -68,4 +68,31 @@ function clearDivs(){
     $("#fitness_container").empty();
     $("#chemistry_container").empty();
     $("#position_container").empty();
+}
+function initializeChart()
+{
+    let select = $("#testchart");
+    let this_chart = new Chart(select, {
+    type: 'line',
+    data: {
+        labels: null,
+        datasets: null,
+    },
+    options: {
+        maintainAspectRatio: false,
+        events: ['click'],
+        animation: false,
+        spanGaps: true,
+        scales: {
+            yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Average Lowest BIN Price'
+            }
+        }]
+    },
+    },
+    });
+    current_chart = this_chart;
+    getData("fitness", 1);
 }
