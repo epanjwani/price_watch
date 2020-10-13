@@ -3,7 +3,7 @@ require "database.php";
 $initial_utc = substr($_GET['initial_utc'], 5, -7);
 $startDate = date_create_from_format("d M Y H:i", $initial_utc);
 $date_query = date_format($startDate, "H_i_Y_m_d");
-
+/*
 //fitness, max, min
 $fitness_id_stmt = $connection->prepare("SELECT id FROM fitness WHERE date = '$date_query'");
 $fitness_id_stmt->execute();
@@ -53,7 +53,7 @@ $fitnessdata = [
     'silver' => $silver_arr, 
     'bronze' => $bronze_arr
 ];
-
+ */
 //position, max, min
 $pos_id_stmt = $connection->prepare("SELECT id FROM position WHERE date = '$date_query'");
 $pos_id_stmt->execute();
@@ -293,7 +293,6 @@ $chemistrydata = [
 ];
 //export
 $data = [
-    'fitness' => $fitnessdata,
     'position' => $positiondata,
     'chemistry' =>$chemistrydata
 ];

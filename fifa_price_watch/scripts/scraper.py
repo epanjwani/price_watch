@@ -77,16 +77,12 @@ def chemStyleScraper():
 def exporter():
     chem_dict = chemStyleScraper()
     pos_dict = positionScraper()
-    fit_dict = fitnessScraper()
     date_time = datetime.datetime.now().strftime("%H_%M_%Y_%m_%d") #utc time, need to adjust on front-end for user
-    fitnessjson = {date_time : fit_dict}
     positionjson = {date_time : pos_dict}
     chemistryjson = {date_time : chem_dict}
     data = {}
     with open('/home/ep/public_html/price_watch/fifa_price_watch/data/data.json') as data_file:
         data = json.load(data_file)
-        fit = data['fitness']
-        fit.append(fitnessjson)
         pos = data['position']
         pos.append(positionjson)
         chem = data['chemistry']

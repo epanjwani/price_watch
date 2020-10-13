@@ -9,7 +9,7 @@ if ((int)date_format($startDate, "i") >= 30)
     date_time_set($startDate, date_format($startDate, "H"), 30, date_format($startDate, "s"));
 else
     date_time_set($startDate, date_format($startDate, "H"), 00, date_format($startDate, "s"));
-if ($table == "fitness")
+/*if ($table == "fitness")
 {
     $date_arr = array();
     $gold_arr = array();
@@ -50,8 +50,8 @@ if ($table == "fitness")
         'bronze' => $bronze_arr
     ];
     echo json_encode($data);
-}
-elseif ($table == "position")
+    }*/
+if ($table == "position")
 {
     $date_arr = array();
     $lwb_lb_array = array();
