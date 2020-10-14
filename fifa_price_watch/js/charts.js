@@ -1,4 +1,4 @@
-function generateFitnessChart(dates, bronze, silver, gold)
+/*function generateFitnessChart(dates, bronze, silver, gold)
 {
     let label = dates;
     let dataset = [{
@@ -21,7 +21,7 @@ function generateFitnessChart(dates, bronze, silver, gold)
         }];
     updateChart(label, dataset);
 }
-
+*/
 function generatePositionChart(dates_array, lwb_lb_array, lb_lwb_array, rwb_rb_array, rb_rwb_array, lm_lw_array, 
 lw_lm_array, rw_rm_array, rm_rw_array, lw_lf_array, lf_lw_array, rw_rf_array, rf_rw_array, cm_cam_array, 
 cam_cm_array, cam_cf_array, cf_cam_array, cm_cdm_array, cdm_cm_array, cf_st_array, st_cf_array)

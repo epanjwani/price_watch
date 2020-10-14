@@ -35,9 +35,6 @@ function selectedState()
 {
     switch(current_req)
     {
-        case "fitness":
-            $("#fitness_button").addClass("selected");
-            break;
         case "position":
             $("#position_button").addClass("selected");
             break;
@@ -57,7 +54,6 @@ function selectedState()
 }
 
 function clearSelectedState(){
-    $("#fitness_button").removeClass("selected");
     $("#position_button").removeClass("selected");
     $("#chemistry_button").removeClass("selected");
     $("#day_button").removeClass("selected");
@@ -65,7 +61,6 @@ function clearSelectedState(){
 }
 
 function clearDivs(){
-    $("#fitness_container").empty();
     $("#chemistry_container").empty();
     $("#position_container").empty();
 }
@@ -94,5 +89,5 @@ function initializeChart()
     },
     });
     current_chart = this_chart;
-    getData("fitness", 1);
+    getData("chemistry", 1);
 }

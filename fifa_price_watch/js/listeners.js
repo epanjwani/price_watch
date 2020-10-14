@@ -2,9 +2,6 @@ $(document).ready(function(){
     initializeChart();
     getSidebarData();
 });
-$("#fitness_button").click(function(){
-    getData("fitness", current_time);
-});
 $("#chemistry_button").click(function(){
     getData("chemistry", current_time);
 });

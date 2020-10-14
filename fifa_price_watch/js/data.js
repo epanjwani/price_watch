@@ -17,9 +17,7 @@ function getData(type, length)
             data = JSON.parse(unparsed_data);
             updateDisplayText(data['date'][0], data['date'][data['date'].length -1]);
             checkButtons(data.length, length);
-            if (type == "fitness")
-                generateFitnessChart(data['date'], data['bronze'], data['silver'], data['gold']);
-            else if (type == "position")
+            if (type == "position")
                 generatePositionChart(data['date'], data['lwb_lb'], data['lb_lwb'], data['rwb_rb'], data['rb_rwb'], data['lm_lw'], data["lw_lm"], data["rw_rm"], data["rm_rw"], data['lw_lf'], data['lf_lw'], data['rw_rf'], data['rf_rw'], data['cm_cam'], data['cam_cm'], data['cam_cf'], data['cf_cam'], data['cm_cdm'], data['cdm_cm'], data['cf_st'], data['st_cf']);
             else if (type == "chemistry")
                 generateChemistryChart(data['date'], data['anchor'], data['hawk'], data['engine'], data['deadeye'], data['basic'], data['shadow'], data['hunter'], data['catalyst'], data['sniper']);
@@ -30,7 +28,6 @@ function getData(type, length)
 function getSidebarData()
 {
     clearDivs();
-    $("#fitness_container").append("<div id = 'fitness_section' class = 'divider'>Squad Fitness</div>");
     $("#chemistry_container").append("<div id = 'chemisty_section' class = 'divider'>Chemistry Styles</div>");
     $("#position_container").append("<div id = 'position_section' class = 'divider'>Position Modifiers</div>");
     let initial = new Date();
